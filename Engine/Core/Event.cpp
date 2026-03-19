@@ -1772,20 +1772,20 @@ void ONScripter::runEventLoop() {
 							// This is a wait-for-voice.
 							// When the voice ends, we are expected to expire the wait, or otherwise set up a timer that will expire it later.
 							// (If we already went through this code once to set up a timer, then we don't need to do this, of course.)
-							// if (!(wave_sample[0] && Mix_Playing(0) && !Mix_Paused(0))) {
-							// The voice has ended.
-							// Is there an additional delay that we're supposed to wait for?
-							int32_t additionalWaitTime{0};
-							if (!ignore_voicedelay) {
-								if (bwa->voiced_txtbtnwait && voicedelay_time)
-									additionalWaitTime = voicedelay_time;
-								if (bwa->final_voiced_txtbtnwait && final_voicedelay_time)
-									additionalWaitTime = final_voicedelay_time;
+							if (!(wave_sample[0] && Mix_Playing(0) && !Mix_Paused(0))) {
+								// The voice has ended.
+								// Is there an additional delay that we're supposed to wait for?
+								int32_t additionalWaitTime{0};
+								if (!ignore_voicedelay) {
+									if (bwa->voiced_txtbtnwait && voicedelay_time)
+										additionalWaitTime = voicedelay_time;
+									if (bwa->final_voiced_txtbtnwait && final_voicedelay_time)
+										additionalWaitTime = final_voicedelay_time;
+								}
+								// If there's no delay, this will expire immediately. (Same as terminate.)
+								bwa->clock.setCountdown(additionalWaitTime);
+								bwa->timer_set = true;
 							}
-							// If there's no delay, this will expire immediately. (Same as terminate.)
-							bwa->clock.setCountdown(additionalWaitTime);
-							bwa->timer_set = true;
-							// }
 						}
 					}
 				}

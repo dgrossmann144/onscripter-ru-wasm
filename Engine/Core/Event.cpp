@@ -1662,9 +1662,9 @@ void ONScripter::runEventLoop() {
 						// Falls through -- will return from waitEvent (prematurely) after doing a final UPKEEP
 
 					case ONS_UPKEEP_EVENT:
-						if ((event_mode & WAIT_VOICE_MODE) && wave_sample[0] && Mix_Playing(0) && !Mix_Paused(0)) {
-							break;
-						}
+						// if ((event_mode & WAIT_VOICE_MODE) && wave_sample[0] && Mix_Playing(0) && !Mix_Paused(0)) {
+						// 	break;
+						// }
 
 						if (!automode_flag && started_in_automode && clickstr_state != CLICK_NONE) {
 							started_in_automode = false;

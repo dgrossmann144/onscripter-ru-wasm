@@ -70,6 +70,7 @@ void ButtonWaitAction::onExpired() {
 
 bool WaitVoiceAction::expired() {
 	bool voice_ended = countDownStarted || !ons.wave_sample[0] || !Mix_Playing(0) || Mix_Paused(0);
+	voice_ended = true;
 
 	if (voice_ended && voiceDelayMs != 0) {
 		if (!countDownStarted) {

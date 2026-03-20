@@ -732,7 +732,7 @@ private:
 	// For rondo we additionally introduced a 0.4 multiplier, which fits most of the scenes.
 	float voicewait_multiplier{1.0};
 	int32_t final_voicedelay_time{0};
-	bool ignore_voicedelay{false};
+	bool ignore_voicedelay{true};
 	int32_t autoclick_time;
 	bool reduce_motion{false};
 

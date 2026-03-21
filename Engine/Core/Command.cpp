@@ -3351,8 +3351,7 @@ int ONScripter::btnwaitCommand() {
 
 	bool voice_plays = wave_sample[0] && Mix_Playing(0) && !Mix_Paused(0);
 
-	if (action && ((!voice_plays && automode_flag) ||
-	               (!textbtn_flag && btntime_value > 0))) {
+	if (action && (automode_flag || (!textbtn_flag && btntime_value > 0))) {
 		action->event_mode |= WAIT_TIMER_MODE;
 		if (t > 0) {
 			action->clock.setCountdown(t);
